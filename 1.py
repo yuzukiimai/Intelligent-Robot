@@ -3,8 +3,8 @@ import numpy as np
  
 cap = cv2.VideoCapture(0) # 任意の動画
  
-while(1):
-    _, frame = cap.read()
+while True:
+    ret, frame = cap.read()
  
     #マスク画像取得
     def getMask(l, u):
