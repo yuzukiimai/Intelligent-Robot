@@ -67,5 +67,5 @@ while(1):
     #Q で終了
     if k == ord('q'):
         break
- 
+cap.release()
 cv2.destroyAllWindows()
