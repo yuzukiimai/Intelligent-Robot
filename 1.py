@@ -61,11 +61,11 @@ while True:
  
  
     # 再生する場合
-    cv2.imshow('video',contours_frame)
- 
-    k = cv2.waitKey(25) & 0xFF
-    #Q で終了
-    if k == ord('q'):
+    cv2.imshow('video', contours_frame)
+    cv2.imshow('image', frame)
+    key = cv2.waitKey(1)
+    if key != -1:
         break
+    
 cap.release()
 cv2.destroyAllWindows()
