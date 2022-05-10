@@ -61,7 +61,7 @@ while True:
  
  
     # 再生する場合
-    cv2.imshow('video', contours_frame)
+    #cv2.imshow('video', contours_frame)
     cv2.imshow('image', frame)
     key = cv2.waitKey(1)
     if key != -1:
