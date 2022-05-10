@@ -9,7 +9,10 @@ import math
 # 0 <= s <= 255 (彩度)　黒や白の値が抽出されるときはこの閾値を大きくする
 # 0 <= v <= 255 (明度)　これが大きいと明るく，小さいと暗い
 c1_min = np.array([97, 50, 50])
-c1_max = np.array([117, 255, 255])    
+c1_max = np.array([117, 255, 255])  
+
+c2_min = np.array([170,170,60])
+c2_max = np.array([190,255,255])
 
 # 膨張化用のカーネル
 # k = np.ones((5,5),np.uint8)
@@ -49,6 +52,8 @@ def main():
         # カラーボールのトラッキング
         mask1 = color_track(im,c1_min,c1_max)
         mask2 = color_track(im,c1_min,c1_max)
+        mask3 = color_track(im,c2_min,c2_max)
+        mask4 = color_track(im,c2_min,c2_max)
 
         # 色領域の輪郭を抽出
         image, cnt, hierarchy = cv2.findContours(mask2,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
