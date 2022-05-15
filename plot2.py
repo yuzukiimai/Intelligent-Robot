@@ -51,19 +51,19 @@ while True:
     fps = "{:.0f}FPS".format(1/elapsedTime)
 
     # 画面にfpsを表示させる
-    cv2.putText(img_a, fps, (50, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 0), 2, cv2.LINE_AA)
+   # cv2.putText(img_a, fps, (50, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 0), 2, cv2.LINE_AA)
     
     # USBカメラから取り込んだ映像を表示
     cv2.imshow('cap_test_a', img_a)
 
     # 画面表示位置の指定(表示画面の名前, x座標, y座標)
-    cv2.moveWindow('cap_test_a', 200, 50)  
+   # cv2.moveWindow('cap_test_a', 200, 50)  
 
     # グラフの表示位置を指定
-    fig_place = plt.get_current_fig_manager()
+   # fig_place = plt.get_current_fig_manager()
 
     # カッコの中(windows画面のx座標，y座標，表示させる図の幅，図の高さ)
-    fig_place.window.setGeometry(1112, 85, 640, 480)  
+   # fig_place.window.setGeometry(1112, 85, 640, 480)  
 
     k = cv2.waitKey(10)
     
