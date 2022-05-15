@@ -42,7 +42,7 @@ while True:
         plt.xlim([0, 256])
 
     # プロットの更新間隔。カッコの中は時間(msec)
-    plt.pause(0.1)
+    plt.pause(0.01)
 
     # 時間計測終了
     elapsedTime = time.time() - t1
