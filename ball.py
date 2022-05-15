@@ -1,10 +1,20 @@
 import cv2
 import numpy as np
  
-cap = cv2.VideoCapture(0) # 任意の動画
+cap = cv2.VideoCapture('ball.mp4') # 任意の動画
  
 while(1):
     _, frame = cap.read()
+    frameOrig = frame
+    #ボール１つのサイズ
+    ballSize = 9200
+    # 射影変換
+    rows, cols, ch = frame.shape
+    pts1 = np.float32([[0, 0], [1280, 0], [0, 720], [1280, 720]])
+    pts2 = np.float32([[0, 0], [1280, 0], [0, 720], [1280, 720]])
+    M = cv2.getPerspectiveTransform(pts1, pts2)
+    dst = cv2.warpPerspective(frame, M, (1280, 720))
+    frame = dst
  
     #マスク画像取得
     def getMask(l, u):
@@ -22,50 +32,22 @@ while(1):
             mask = np.zeros(h.shape, dtype=np.uint8)
             mask[((h < lower[0]*-1) | (h > upper[0])) & (s > lower[1])] = 255
  
-        return cv2.bitwise_and(frame,frame, mask= mask)
+        #ボールの面積計算
+        ballPixels = cv2.countNonZero(mask)
+        ballNum = str(round(ballPixels / ballSize))
  
-    # 輪郭取得
-    def getContours(img,t,r):
-        gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-        ret, thresh = cv2.threshold(gray, t, 255, cv2.THRESH_BINARY)
-        imgEdge, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        return cv2.putText(frameOrig, ballNum, (100, 650), cv2.FONT_HERSHEY_SIMPLEX, 8.0, (255, 255, 255), thickness=10)
  
-        # 一番大きい輪郭を抽出
-        contours.sort(key=cv2.contourArea, reverse=True)
+    # 黄色マスク
+    num_frame = getMask([30,100,100], [40,255,255])
  
-        #一つ以上検出
-        if len(contours) > 0:
-            cnt = contours[0]
- 
- 
-            # 最小外接円を描く
-            (x,y), radius = cv2.minEnclosingCircle(cnt)
-            center = (int(x),int(y))
-            radius = int(radius)
- 
-            if radius > r:
-                return cv2.circle(frame,center,radius,(0,255,0),2)
-            else:
-                return frame
-        else:
-            return frame
-    # 青・緑・赤マスク
-    res_blue = getMask([110,45,30], [150,255,255])
-    res_green = getMask([20,35,30], [50,255,255])
-    res_red = getMask([-10,10,30], [150,255,255])
- 
-    #輪郭取得
-    getContours(res_blue, 30, 55) # (画像, 明度閾値, 最小半径)
-    contours_frame = getContours(res_green, 30, 55)
-    contours_frame = getContours(res_red, 30, 55)
- 
- 
-    # 再生する場合
-    cv2.imshow('video',contours_frame)
+    # 再生
+    cv2.imshow('video',num_frame)
  
     k = cv2.waitKey(25) & 0xFF
     #Q で終了
     if k == ord('q'):
         break
+ 
  
 cv2.destroyAllWindows()
