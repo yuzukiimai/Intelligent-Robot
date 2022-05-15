@@ -18,8 +18,16 @@ while True:
     lower_blue = np.array([100, 50, 50])
     upper_blue = np.array([150, 255, 255])
     img_mask_blue = cv2.inRange(hsv, lower_blue, upper_blue)
-    img_color_blue = cv2.bitwise_and(img, img, mask=img_mask_blue)
-
+    img_color_blue = cv2.bitwise_and(img, img, mask1=img_mask_blue)
+    
+    #------------------------------------------------------------------------------------
+    
+    lower_red = np.array([170, 170, 60])
+    upper_red = np.array([190, 255, 255])
+    img_mask_red = cv2.inRange(hsv, lower_red, upper_red)
+    img_color_red = cv2.bitwise_and(img, img, mask2=img_mask_red)
+    
+    
     #blue
     #labeling_preparation
     img_color_blue = cv2.GaussianBlur(img_color_blue, (33,33), 1)
@@ -37,7 +45,7 @@ while True:
     center_blue = np.delete(label_blue[3], 0, 0)
 
     #word
-    font_size = 2
+    font_size = 3
     font = cv2.FONT_HERSHEY_PLAIN
 
     for k in range(n_blue):
