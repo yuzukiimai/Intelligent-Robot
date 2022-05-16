@@ -6,7 +6,7 @@ import numpy as np
 
 def find_target(image, limit):
     # hsv空間の作成
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV_FULL)
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     h = hsv[:, :, 0]
     s = hsv[:, :, 1]
     # 取得画像のサイズでhsv空間の配列を作成
