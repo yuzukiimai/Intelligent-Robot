@@ -45,15 +45,15 @@ def find_target(image, limit):
 # メイン処理
 if __name__ == "__main__":
     cap = cv2.VideoCapture(0)
-    print(type(capture))
+    print(type(cap))
     # しきい値
     lim = []
     lim.append([340, 18, 230, 140])  # 赤
     lim.append([40, 60, 290, 210])  # 黄
     lim.append([215, 230, 280, 230])  # 青
 
-    width = capture.get(cv2.CAP_PROP_FRAME_WIDTH)
-    height = capture.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+    height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
     print(width, height)
 
     while cv2.waitKey(5) != 27:
