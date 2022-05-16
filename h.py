@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     while cv2.waitKey(5) != 27:
 
-        _, frame = capture.read()
+        _, frame = cap.read()
         image = frame.copy()
         mask = frame.copy()
         detect = []
