@@ -22,7 +22,7 @@ def find_target(image, limit):
              & ((limit[3] < s) & (s < limit[2]))] = 255
     # 輪郭計算
     contours, _ = cv2.findContours(
-        mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     circles = []
     # 計算した輪郭をなめらかにマルっと包み込む
@@ -44,7 +44,7 @@ def find_target(image, limit):
 
 # メイン処理
 if __name__ == "__main__":
-    capture = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0)
     print(type(capture))
     # しきい値
     lim = []
@@ -100,5 +100,5 @@ if __name__ == "__main__":
                     image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 2, cv2.LINE_AA)
         cv2.imshow('position', image)
 
-    capture.release()
+    cap.release()
     cv2.destroyAllWindows()
