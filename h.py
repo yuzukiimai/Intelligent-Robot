@@ -28,7 +28,7 @@ def find_target(image, limit):
         approx = cv2.convexHull(contour)
         area = cv2.contourArea(approx)
         # デカすぎor小さすぎな領域はスキップ
-        if area < 1e2 or 1e5 < area:
+        if area < 1e1 or 1e5 < area:
             continue
         # 最小外接円で近似
         (x, y), radius = cv2.minEnclosingCircle(approx)
@@ -71,7 +71,7 @@ if __name__ == "__main__":
             if ball_data[1] < 30:
                 continue
             x, y = ball_data[0]
-            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 10)
+            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 3)
             if ball_data[2] == 0:
                 cv2.putText(
                     image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_4)
