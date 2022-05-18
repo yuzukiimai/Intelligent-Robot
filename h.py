@@ -71,7 +71,7 @@ if __name__ == "__main__":
             if ball_data[1] < 30:
                 continue
             x, y = ball_data[0]
-            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 3)
+            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 1)
             if ball_data[2] == 0:
                 cv2.putText(
                     image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
