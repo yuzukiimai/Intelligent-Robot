@@ -74,17 +74,17 @@ if __name__ == "__main__":
             cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 2)
             if ball_data[2] == 0:
                 cv2.putText(
-                    image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
+                    image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
               
             elif ball_data[2] == 1:
                 cv2.putText(
-                    image, 'yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 217, 255), 2, cv2.LINE_AA)
+                    image, 'yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 217, 255), 2, cv2.LINE_AA)
               
             else:
                 cv2.putText(
-                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2, cv2.LINE_AA)
+                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
                 
-        cv2.imshow('color_detection', image)
+        cv2.imshow('color_detect', image)
 
     capture.release()
     cv2.destroyAllWindows()
