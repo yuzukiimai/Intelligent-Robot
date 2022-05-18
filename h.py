@@ -6,7 +6,7 @@ import numpy as np
 
 def find_target(image, limit):
     # hsv空間の作成
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV_FULL)
     h = hsv[:, :, 0]
     s = hsv[:, :, 1]
     # 取得画像のサイズでhsv空間の配列を作成
@@ -22,7 +22,7 @@ def find_target(image, limit):
              & ((limit[3] < s) & (s < limit[2]))] = 255
     # 輪郭計算
     contours, _ = cv2.findContours(
-        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     circles = []
     # 計算した輪郭をなめらかにマルっと包み込む
@@ -44,21 +44,21 @@ def find_target(image, limit):
 
 # メイン処理
 if __name__ == "__main__":
-    cap = cv2.VideoCapture(0)
-    print(type(cap))
+    capture = cv2.VideoCapture(0)
+    print(type(capture))
     # しきい値
     lim = []
     lim.append([340, 18, 230, 140])  # 赤
     lim.append([40, 60, 290, 210])  # 黄
     lim.append([215, 230, 280, 230])  # 青
 
-    width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-    height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    width = capture.get(cv2.CAP_PROP_FRAME_WIDTH)
+    height = capture.get(cv2.CAP_PROP_FRAME_HEIGHT)
     print(width, height)
 
     while cv2.waitKey(5) != 27:
 
-        _, frame = cap.read()
+        _, frame = capture.read()
         image = frame.copy()
         mask = frame.copy()
         detect = []
@@ -100,5 +100,5 @@ if __name__ == "__main__":
                     image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 2, cv2.LINE_AA)
         cv2.imshow('position', image)
 
-    cap.release()
+    capture.release()
     cv2.destroyAllWindows()
