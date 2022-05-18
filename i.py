@@ -64,9 +64,8 @@ if __name__ == "__main__":
             circles, scale = find_target(frame, lim[i])
             for target in circles:
                 detect.append([target[0], target[1], i])
-               # so = np.array(detect)
 
-       # so = so[so[:, 1].argsort()[::-1]]
+            
         for n, ball_data in enumerate(detect):
             if ball_data[1] < 30:
                 continue
