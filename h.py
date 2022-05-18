@@ -64,25 +64,25 @@ if __name__ == "__main__":
             circles, scale = find_target(frame, lim[i])
             for target in circles:
                 detect.append([target[0], target[1], i])
-                soiya2 = np.array(detect)
+                s = np.array(detect)
            
-        soiya2 = soiya2[soiya2[:, 1].argsort()[::-1]]
-        for n, ball_data in enumerate(soiya2):
+        s = s[s[:, 1].argsort()[::-1]]
+        for n, ball_data in enumerate(s):
             if ball_data[1] < 30:
                 continue
             x, y = ball_data[0]
             cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 2)
             if ball_data[2] == 0:
                 cv2.putText(
-                    image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_8)
+                    image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_4)
               
             elif ball_data[2] == 1:
                 cv2.putText(
-                    image, 'yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 217, 255), 2, cv2.LINE_8)
+                    image, 'yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 217, 255), 2, cv2.LINE_4)
               
             else:
                 cv2.putText(
-                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2, cv2.LINE_8)
+                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2, cv2.LINE_4)
                 
         cv2.imshow('color_detect', image)
 
