@@ -65,37 +65,25 @@ if __name__ == "__main__":
             for target in circles:
                 detect.append([target[0], target[1], i])
                 soiya2 = np.array(detect)
-            #if cv2.waitKey(30) == ord('r'):
-             #   if i == 0:
-              #      cv2.imshow('mask', scale)
-            #if cv2.waitKey(30) == ord('y'):
-             #   if i == 1:
-              #      cv2.imshow('mask', scale)
-            #if cv2.waitKey(30) == ord('b'):
-             #   if i == 2:
-              #      cv2.imshow('mask', scale)
-
+           
         soiya2 = soiya2[soiya2[:, 1].argsort()[::-1]]
         for n, ball_data in enumerate(soiya2):
             if ball_data[1] < 30:
                 continue
             x, y = ball_data[0]
-            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 1)
+            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 3)
             if ball_data[2] == 0:
                 cv2.putText(
-                    image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 1, cv2.LINE_8)
-                #cv2.putText(
-                 #   image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3, cv2.LINE_AA)
+                    image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 3, cv2.LINE_8)
+              
             elif ball_data[2] == 1:
                 cv2.putText(
-                    image, 'yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 1, cv2.LINE_8)
-                #cv2.putText(
-                  #  image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3, cv2.LINE_AA)
+                    image, 'yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 3, cv2.LINE_8)
+              
             else:
                 cv2.putText(
-                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 1, cv2.LINE_8)
-                #cv2.putText(
-                 #   image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3, cv2.LINE_AA)
+                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 3, cv2.LINE_8)
+                
         cv2.imshow('position', image)
 
     capture.release()
