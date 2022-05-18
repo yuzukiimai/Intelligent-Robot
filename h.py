@@ -67,7 +67,7 @@ if __name__ == "__main__":
                 so = np.array(detect)
            
         so = so[so[:, 1].argsort()[::-1]]
-        for n, ball_data in enumerate(s):
+        for n, ball_data in enumerate(so):
             if ball_data[1] < 30:
                 continue
             x, y = ball_data[0]
