@@ -83,19 +83,19 @@ if __name__ == "__main__":
             cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 2)
             if ball_data[2] == 0:
                 cv2.putText(
-                    image, '赤', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 1, cv2.LINE_AA)
-                cv2.putText(
-                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 1, cv2.LINE_AA)
+                    image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 3, cv2.LINE_AA)
+                #cv2.putText(
+                 #   image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3, cv2.LINE_AA)
             elif ball_data[2] == 1:
                 cv2.putText(
-                    image, '黄', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 1, cv2.LINE_AA)
-                cv2.putText(
-                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 1, cv2.LINE_AA)
+                    image, 'yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 3, cv2.LINE_AA)
+                #cv2.putText(
+                  #  image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3, cv2.LINE_AA)
             else:
                 cv2.putText(
-                    image, '青', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 1, cv2.LINE_AA)
-                cv2.putText(
-                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 1, cv2.LINE_AA)
+                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 3, cv2.LINE_AA)
+                #cv2.putText(
+                 #   image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3, cv2.LINE_AA)
         cv2.imshow('position', image)
 
     capture.release()
