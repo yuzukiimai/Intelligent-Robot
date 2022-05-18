@@ -65,15 +65,15 @@ if __name__ == "__main__":
             for target in circles:
                 detect.append([target[0], target[1], i])
                 soiya2 = np.array(detect)
-           # if cv2.waitKey(30) == ord('r'):
-            #    if i == 0:
-             #       cv2.imshow('mask', scale)
-           # if cv2.waitKey(30) == ord('y'):
-            #    if i == 1:
-             #       cv2.imshow('mask', scale)
-            #if cv2.waitKey(30) == ord('b'):
-             #   if i == 2:
-              #      cv2.imshow('mask', scale)
+            if cv2.waitKey(30) == ord('r'):
+                if i == 0:
+                    cv2.imshow('mask', scale)
+            if cv2.waitKey(30) == ord('y'):
+                if i == 1:
+                    cv2.imshow('mask', scale)
+            if cv2.waitKey(30) == ord('b'):
+                if i == 2:
+                    cv2.imshow('mask', scale)
 
         soiya2 = soiya2[soiya2[:, 1].argsort()[::-1]]
         for n, ball_data in enumerate(soiya2):
