@@ -1,8 +1,6 @@
 import cv2
 import numpy as np
 
-##############find_target###############
-
 
 def find_target(image, limit):
     # hsv空間の作成
@@ -67,15 +65,15 @@ if __name__ == "__main__":
             for target in circles:
                 detect.append([target[0], target[1], i])
                 soiya2 = np.array(detect)
-            if cv2.waitKey(30) == ord('r'):
-                if i == 0:
-                    cv2.imshow('mask', scale)
-            if cv2.waitKey(30) == ord('y'):
-                if i == 1:
-                    cv2.imshow('mask', scale)
-            if cv2.waitKey(30) == ord('b'):
-                if i == 2:
-                    cv2.imshow('mask', scale)
+           # if cv2.waitKey(30) == ord('r'):
+            #    if i == 0:
+             #       cv2.imshow('mask', scale)
+           # if cv2.waitKey(30) == ord('y'):
+            #    if i == 1:
+             #       cv2.imshow('mask', scale)
+            #if cv2.waitKey(30) == ord('b'):
+             #   if i == 2:
+              #      cv2.imshow('mask', scale)
 
         soiya2 = soiya2[soiya2[:, 1].argsort()[::-1]]
         for n, ball_data in enumerate(soiya2):
@@ -85,19 +83,19 @@ if __name__ == "__main__":
             cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 2)
             if ball_data[2] == 0:
                 cv2.putText(
-                    image, 'Red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 2, cv2.LINE_AA)
+                    image, '赤', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 1, cv2.LINE_AA)
                 cv2.putText(
-                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 2, cv2.LINE_AA)
+                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 1, cv2.LINE_AA)
             elif ball_data[2] == 1:
                 cv2.putText(
-                    image, 'Yellow', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 2, cv2.LINE_AA)
+                    image, '黄', (x-33, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 1, cv2.LINE_AA)
                 cv2.putText(
-                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 2, cv2.LINE_AA)
+                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 1, cv2.LINE_AA)
             else:
                 cv2.putText(
-                    image, 'Blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 2, cv2.LINE_AA)
+                    image, '青', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 200, 0), 1, cv2.LINE_AA)
                 cv2.putText(
-                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 2, cv2.LINE_AA)
+                    image, str(n), (x, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 1, cv2.LINE_AA)
         cv2.imshow('position', image)
 
     capture.release()
