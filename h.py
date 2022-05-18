@@ -82,7 +82,7 @@ if __name__ == "__main__":
               
             else:
                 cv2.putText(
-                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, , 0), 2, cv2.LINE_8)
+                    image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2, cv2.LINE_8)
                 
         cv2.imshow('position', image)
 
