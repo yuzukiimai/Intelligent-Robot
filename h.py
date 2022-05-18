@@ -71,7 +71,7 @@ if __name__ == "__main__":
             if ball_data[1] < 30:
                 continue
             x, y = ball_data[0]
-            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 5)
+            cv2.circle(image, ball_data[0], ball_data[1], (0, 255, 0), 2)
             if ball_data[2] == 0:
                 cv2.putText(
                     image, 'red', (x-20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_8)
@@ -84,7 +84,7 @@ if __name__ == "__main__":
                 cv2.putText(
                     image, 'blue', (x-25, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2, cv2.LINE_8)
                 
-        cv2.imshow('position', image)
+        cv2.imshow('color_detect', image)
 
     capture.release()
     cv2.destroyAllWindows()
